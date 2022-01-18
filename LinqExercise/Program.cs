@@ -24,14 +24,53 @@ namespace LinqExercise
              */
 
             //Print the Sum and Average of numbers
+            var sumOfNumbers = numbers.Sum();
+            var average = numbers.Average();
+            Console.WriteLine($"The sum of the numbers is: {sumOfNumbers}");
+            Console.WriteLine($"The average of the numbers is: {average}");
+
 
             //Order numbers in ascending order and decsending order. Print each to console.
+            var ascendingOrder = numbers.OrderBy(num => num);
+            var decendingOrder = numbers.OrderByDescending(num => num);
+
+            Console.WriteLine("Ascending Order:");
+            foreach (var number in ascendingOrder)
+            {
+                Console.WriteLine(number);
+            }
+
+            Console.WriteLine("Decending Order:");
+            foreach (var number in decendingOrder)
+            {
+                Console.WriteLine(number);
+            }
 
             //Print to the console only the numbers greater than 6
+            var onlySix = numbers.Where(x => x > 6);
+
+            Console.WriteLine("Only Numbers Greater Than Six:");
+            foreach (var number in onlySix)
+            {
+                Console.WriteLine(number);
+            }
 
             //Order numbers in any order (acsending or desc) but only print 4 of them **foreach loop only!**
+            Console.WriteLine("Printing Only 4 Numbers:");
+            foreach (var num in numbers.OrderByDescending(x => numbers).Take(4))
+            {
+                Console.WriteLine(num);
+            }
 
             //Change the value at index 4 to your age, then print the numbers in decsending order
+            Console.WriteLine("Replacing Index 4 with my age:");
+            numbers.SetValue(30, 4);
+            foreach (var num in numbers.OrderBy(num => num))
+            {
+                Console.WriteLine(num);
+            }
+
+
 
             // List of employees ***Do not remove this***
             var employees = CreateEmployees();
@@ -47,7 +86,7 @@ namespace LinqExercise
 
             //Add an employee to the end of the list without using employees.Add()
 
-            
+
             Console.WriteLine();
 
             Console.ReadLine();
@@ -72,4 +111,4 @@ namespace LinqExercise
         }
         #endregion
     }
-
+}
